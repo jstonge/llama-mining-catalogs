@@ -1,3 +1,10 @@
+#
+# Makefile for the LLM catalog mining experiments
+#
+# Author: JSO
+# Date: 2024-04-24
+#
+
 DATA_DIR=$(realpath ./data)
 DATA_DIR_RAW=$(DATA_DIR)/raw
 DATA_DIR_CLEAN=$(DATA_DIR)/clean
@@ -53,8 +60,12 @@ cat_db_to_bba:
 											 --skip_pages $(SKIP_PAGES)
 
 bba_to_cner: 
-	python $(MV_ANNOTS_DIR)/BBA_to_cNER.py --ror $(ROR)
+	python $(MV_ANNOTS_DIR)/BBA_to_cNER.py --ror $(ROR) \
+										   --n_pages $(n_pages) \
+										   --course_obj_per_page $(course_obj_per_page)
 
+# For now, we simply push all the data from BBA to fpNER (REA).
+# Then we balance fpNER project using another function.
 bba_to_fpner: 
 	python $(MV_ANNOTS_DIR)/BBA_to_fpNER.py
 
@@ -77,3 +88,13 @@ kfold_split:
 #        TRAINING       #
 #                       #
 #########################
+
+#!TODO
+
+#############################
+#                           #
+#        BENCHMARKING       #
+#                           #
+#############################
+
+#!TODO

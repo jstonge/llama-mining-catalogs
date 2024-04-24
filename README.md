@@ -1,4 +1,37 @@
-# Llama Mining Catalogs
+
+# Welcome
+_"How can we use LLMS to mine data". This is our big question. We run experiments to assess time and efforts of different approaches to solve that problem._
+
+## Project structure
+
+We take as starting point the observable framework structure, but modify it a little to accomodate our data processing pipeline. That is, on top of the Framework project that mostly lives in `docs/` (see hidden summary below for authors' description), we have a project structure heavily inspired from the [Turing Way's repository structure](https://book.the-turing-way.org/project-design/project-repo/project-repo-advanced#example-with-every-possible-folder):
+
+```ini
+.
+├─ data # Observable framework app
+│  ├─ clean       # processed file
+│  │  └─ train/test/validation
+│  └─ raw       
+├─ docs # Observable framework app (see <details>)
+├─ src
+|  ├─ moving_annots # scripts to move around anots
+│  │  ├─ catDB_to_BBA.py
+│  │  ├─ ...
+│  │  └─ cNER_to_cSFT.py
+│  ├─ kfold_split.py 
+│  ├─ prepare_fpNER_annots.py 
+│  └─ helpers.py  # helpers shared across scripts
+├─ static  # static resources (images and audio files)
+├─ Makefile # A makefile to run the pipeline
+├── report/   # static analysis
+│   └── report.tex
+├─ README.md
+└─ reqirements.txt
+```
+
+
+<details><summary>How to get started with Observable Framework</summary>
+
 
 This is an [Observable Framework](https://observablehq.com/framework) project. To start the local preview server, run:
 
@@ -51,3 +84,5 @@ A typical Framework project looks like this:
 | `npm run deploy`     | Deploy your project to Observable                        |
 | `npm run clean`      | Clear the local data loader cache                        |
 | `npm run observable` | Run commands like `observable help`                      |
+
+</details>
